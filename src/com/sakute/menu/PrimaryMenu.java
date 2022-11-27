@@ -2,6 +2,7 @@ package com.sakute.menu;
 
 import com.sakute.authentification.Authorization;
 import com.sakute.authentification.Registration;
+import com.sakute.entities.WeatherHttpRequest;
 import java.util.Scanner;
 
 public class PrimaryMenu {
@@ -59,13 +60,19 @@ public class PrimaryMenu {
     }
 
     private static void option2() {
-
-      Registration.registrationProcess();
-
+      Scanner scanner = new Scanner(System.in);
+      System.out.println("Введіть логін: ");
+      String userLogin = scanner.nextLine();
+      System.out.println("Введіть пароль: ");
+      String userPassword = scanner.next();
+      if (!Registration.registrationProcess(userLogin, userPassword)){
+        System.out.println("Помилка реєстрації!");
+      }
     }
 
     private static void option3() {
       System.out.println("Введіть кількість студентів:");
+      WeatherHttpRequest.weatherRequets();
 
     }
 

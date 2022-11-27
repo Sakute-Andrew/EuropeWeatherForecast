@@ -1,7 +1,8 @@
 package com.sakute.authentification;
 
-public class User {
+import java.util.ArrayList;
 
+public class User {
   String login;
   String password;
 
@@ -28,11 +29,12 @@ public class User {
 
   @Override
   public String toString() {
-    return "{" +
-        "login:" + login + '\'' +
-        ",password:" + password +
-        '}';
-
+    return new StringBuffer()
+        .append(this.login)
+        .append("\n")
+        .append(this.password)
+        .append("\n")
+        .toString();
   }
 
 }

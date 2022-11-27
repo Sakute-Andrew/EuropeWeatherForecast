@@ -1,16 +1,16 @@
 package com.sakute.json;
 
 import com.google.gson.Gson;
-import com.sakute.authentification.User;
+import com.sakute.entities.City;
 import java.io.FileReader;
 
-public class GsonParser {
-  public User parse() {
+public class LocationReader {
+  public City parsing() {
     Gson gson = new Gson();
-    try(FileReader reader = new FileReader("users.json")){
-      User user = gson.fromJson(reader, User.class);
-      System.out.println(user);
-      return user;
+    try(FileReader reader = new FileReader("coordinates.json")){
+      City city = gson.fromJson(reader, City.class);
+      System.out.println(city);
+      return city;
 
     }
     catch (Exception e){

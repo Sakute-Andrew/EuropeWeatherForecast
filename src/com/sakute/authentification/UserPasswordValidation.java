@@ -10,6 +10,10 @@ public class UserPasswordValidation {
       System.out.println("Пароль та Логін не можуть бути меншими за 8 та 4 значень відповідно!!!");
       return false;
     }
+    if (password.length() > 20 || login.length() > 20) {
+      System.out.println("Пароль та Логін не можуть бути меншими за 20 значень відповідно!!!");
+      return false;
+    }
     // Regex to check valid password.
     String regex = "^(?=.*[0-9])"
         + "(?=.*[a-z])(?=.*[A-Z])"

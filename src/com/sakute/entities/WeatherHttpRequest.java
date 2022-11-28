@@ -5,15 +5,9 @@ import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
-import java.util.Scanner;
 
 public class WeatherHttpRequest {
-  public static void weatherRequets() {
-
-    Scanner scanner = new Scanner(System.in);
-    System.out.println("Введіть назву Міста чи Регіону");
-    String city = scanner.next();
-    System.out.println("Зачекайте, будь ласка!");
+  public static void weatherRequets(String city) {
     String requestPath = "https://api.openweathermap.org/data/2.5/weather?q="+ city +"&limit=1&appid=3ab8bb892479dae143abd99020ed6f53";
     HttpURLConnection request = null;
     try {

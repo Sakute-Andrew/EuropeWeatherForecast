@@ -1,6 +1,6 @@
 package com.sakute.menu;
 
-import com.sakute.authentification.Authorization;
+import com.sakute.authentification.Authentification;
 import com.sakute.authentification.Registration;
 import com.sakute.entities.WeatherHttpRequest;
 import java.util.Scanner;
@@ -53,9 +53,16 @@ public class PrimaryMenu {
 
     // Опції
     private static void option1() {
-      System.out.println("Введіть оцінку:");
-      Authorization.authorizationProcess();
-
+      Scanner scanner = new Scanner(System.in);
+      System.out.println("Введіть логін: ");
+      String userLogin = scanner.nextLine();
+      System.out.println("Введіть пароль: ");
+      String userPassword = scanner.next();
+      if (!Authentification.authentificationProcess(userLogin, userPassword)){
+        System.out.println("Вхід в аккаунт не виконано!");
+      }else {
+        System.out.println("Успішний вхід!! Вітаємо " + userLogin);
+      }
 
     }
 
@@ -66,18 +73,25 @@ public class PrimaryMenu {
       System.out.println("Введіть пароль: ");
       String userPassword = scanner.next();
       if (!Registration.registrationProcess(userLogin, userPassword)){
-        System.out.println("Помилка реєстрації!");
+        System.out.println(String.join("\n", "Помилка реєстрації!",
+            "Зверніть увагу, ваш пароль має бути наступним:",
+            "- Складатися виключно з ЛАТИНСЬКИХ БУКВ!!", "- Містити цифри(від 0-9)",
+            "- Складатись з великих та маленьких букв", "- Містити символи:[@#$%^&+=]"));
       }
     }
 
     private static void option3() {
-      System.out.println("Введіть кількість студентів:");
-      WeatherHttpRequest.weatherRequets();
+      Scanner scanner = new Scanner(System.in);
+      System.out.println("Введіть назву Міста чи Регіону");
+      String city = scanner.next();
+      System.out.println("Зачекайте, будь ласка!");
+      WeatherHttpRequest.weatherRequets(city);
 
     }
 
   private static void option4() {
-    System.out.println("Ви точно бажаете вийти? Y/N");
+    System.out.println("Ви точно бажаєте вийти? Y/N");
+
 
 
   }

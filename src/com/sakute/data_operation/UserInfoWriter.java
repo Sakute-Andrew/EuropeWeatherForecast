@@ -1,6 +1,6 @@
-package com.sakute;
+package com.sakute.data_operation;
 
-import com.sakute.authentification.User;
+import com.sakute.entities.User;
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.FileWriter;
@@ -17,11 +17,11 @@ public class UserInfoWriter {
       Path path = Paths.get(filename.toString());
       InputStream reader = Files.newInputStream(path);
       BufferedReader userReader = new BufferedReader(new InputStreamReader(reader));
-      String line, user;
-      while ((line = userReader.readLine()) != null) {
-        String[] account = line.split(",");
-        user = account[0];
-        if (user.equals(newUser.getLogin())) {
+      String userData, login;
+      while ((userData = userReader.readLine()) != null) {
+        String[] account = userData.split(",");
+        login = account[0];
+        if (login.equals(newUser.getLogin())) {
           System.out.println("Такий акаунт існує!!!!");
           return false;
         }

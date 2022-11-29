@@ -14,21 +14,14 @@ public class UserPasswordValidation {
       System.out.println("Пароль та Логін не можуть бути меншими за 20 значень відповідно!!!");
       return false;
     }
-    // Regex to check valid password.
-    String regex = "^(?=.*[0-9])"
-        + "(?=.*[a-z])(?=.*[A-Z])"
-        + "(?=.*[@#$%^&+=])"
-        + "(?=\\S+$).{8,20}$";
-    // Compile the ReGex
+    if (password.equals(login)) {
+      System.out.println("Пароль та Логін не можуть бути однаковими!!!");
+      return false;
+    }
+    String regex = "^(?=.*[0-9])" + "(?=.*[a-z])(?=.*[A-Z])" + "(?=.*[@#$%^&+=])" + "(?=\\S+$).{8,20}$";
     Pattern p = Pattern.compile(regex);
-    // Pattern class contains matcher() method
-    // to find matching between given password
-    // and regular expression.
     Matcher m = p.matcher(password);
-    // Return if the password
-    // matched the ReGex
     return m.matches();
-
   }
 
 

@@ -2,11 +2,10 @@ package com.sakute.menu;
 
 import com.sakute.authentification.Authentification;
 import com.sakute.authentification.Registration;
-import com.sakute.entities.WeatherHttpRequest;
+import com.sakute.weather.WeatherHttpRequest;
 import java.util.Scanner;
 
 public class PrimaryMenu {
-
   public static void printMenu(String[] options) {
     for (String option : options) {
       System.out.println(option);
@@ -80,7 +79,7 @@ public class PrimaryMenu {
       }
     }
 
-    private static void option3() {
+    public static void option3() {
       Scanner scanner = new Scanner(System.in);
       System.out.println("Введіть назву Міста чи Регіону");
       String city = scanner.next();

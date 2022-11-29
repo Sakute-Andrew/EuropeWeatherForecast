@@ -1,4 +1,4 @@
-package com.sakute;
+package com.sakute.data_operation;
 
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;
@@ -23,11 +23,12 @@ public class UserInfoReader {
         String[] account = line.split(",");
         user = account[0];
         pass = account[1];
-        if (user.equals(userLogin) && pass.equals(hashedUserPassword)) {
+        if (user.equals(userLogin) && pass.equals(hashedUserPassword) ) {
           System.out.println("Успішний вхід в аккаунт! Вітаємо " + userLogin);
           return true;
-        }else {System.out.println("Неправильний логін чи пароль!Спробуйте ще раз!");
-        return false;
+        }else if (user.equals(userLogin)) {
+          System.out.println("Неправильний логін чи пароль!Спробуйте ще раз!");
+        return true;
         }
       }
     } catch (FileNotFoundException ex) {

@@ -1,6 +1,8 @@
 package com.sakute.menu;
 
-import com.sakute.menu.PrimaryMenu;
+import com.sakute.entities.User;
+import com.sakute.weather.SearchHistory;
+import java.io.File;
 import java.util.Scanner;
 
 public class MainMenu {
@@ -8,7 +10,7 @@ public class MainMenu {
     for (String option : options) {
       System.out.println(option);
     }
-    System.out.print("Ласкаво Просимо у EWF!Виберіть опцію : ");
+    System.out.print("Вітаємо, користувач "+": ");
   }
 
   public static void menu() {
@@ -53,18 +55,20 @@ public class MainMenu {
     PrimaryMenu.option3();
   }
 
-  private static void option2() {
-
-  }
+  private static void option2() { SearchHistory.historyDisplay();}
 
   private static void option3() {
+    File file = new File("src/com/sakute/historyview/"+ User.getLogin() + ".txt");
+    if(file.delete()) {
+      System.out.println("Історію очищено!");
+    }else {
+      System.out.println("Історію вже було очищено!");
+    }
 
   }
 
   private static void option4() {
     System.out.println("Ви точно бажаєте вийти? Y/N");
-
-
 
   }
 

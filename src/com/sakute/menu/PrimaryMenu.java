@@ -1,7 +1,8 @@
 package com.sakute.menu;
 
-import com.sakute.authentification.Authentification;
+import com.sakute.authentification.Authentication;
 import com.sakute.authentification.Registration;
+import com.sakute.entities.User;
 import com.sakute.weather.WeatherHttpRequest;
 import java.util.Scanner;
 
@@ -57,10 +58,12 @@ public class PrimaryMenu {
       String userLogin = scanner.nextLine();
       System.out.println("Введіть пароль: ");
       String userPassword = scanner.next();
-      if (!Authentification.authentificationProcess(userLogin, userPassword)){
+      if (!Authentication.authentificationProcess(userLogin, userPassword)){
         System.out.println("Вхід в аккаунт не виконано!");
       }else {
         System.out.println("Успішний вхід!! Вітаємо " + userLogin);
+        User.AutConfirm.setConfirmed(true);
+        MainMenu.menu();
       }
 
     }
@@ -76,12 +79,16 @@ public class PrimaryMenu {
             "Зверніть увагу, ваш пароль має бути наступним:",
             "- Складатися виключно з ЛАТИНСЬКИХ БУКВ!!", "- Містити цифри(від 0-9)",
             "- Складатись з великих та маленьких букв", "- Містити символи:[@#$%^&+=]"));
+      }else {
+        System.out.println("Успішна реєстрація акаунту!");
+        User.AutConfirm.setConfirmed(true);
+        MainMenu.menu();
       }
     }
 
     public static void option3() {
       Scanner scanner = new Scanner(System.in);
-      System.out.println("Введіть назву Міста чи Регіону");
+      System.out.println("Введіть назву Міста чи Регіону:");
       String city = scanner.next();
       System.out.println("Зачекайте, будь ласка!");
       WeatherHttpRequest.weatherRequets(city);

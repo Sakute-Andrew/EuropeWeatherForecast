@@ -6,7 +6,7 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 
 public class WeatherHttpRequest {
-  public static void weatherRequets(String city) {
+  public static boolean weatherRequets(String city) {
     String requestPath = "https://api.openweathermap.org/data/2.5/weather?q="+ city +"&limit=1&appid=3ab8bb892479dae143abd99020ed6f53&lang=ua&units=metric";
     HttpURLConnection request = null;
     try {
@@ -22,25 +22,19 @@ public class WeatherHttpRequest {
           sb.append(line);
           sb.append("\n");
         }
-        if (sb.length() == 3){
-          System.out.println("Некоректна назва Міста чи Регіону, спробуйте ще раз!");
-          return;
-        }else {
-          System.out.println("Результат пошуку: " + sb);
-        }
-        CityWeather.displayCityWeather(sb.toString());
+        System.out.println("Результат пошуку: " + sb);
+        CityWeather.displayCityWeather(sb.toString(), city);
       }else {
-        System.out.println("ПОМИЛКА ЗАПИТУ " + request.getResponseCode() + "," + request.getResponseMessage());
+        System.out.println("ПОМИЛКА ЗАПИТУ " + request.getResponseCode() + ", " + request.getResponseMessage());
       }
     } catch (Throwable cause){
-      cause.printStackTrace();
+      System.out.println("Немає з'єднання з інтернетом!");
     }finally {
       if (request != null){
         request.disconnect();
 
       }
     }
-
-
+    return true;
   }
 }

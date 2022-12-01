@@ -3,10 +3,6 @@ package com.sakute.entities;
 import java.util.ArrayList;
 
 public class WeatherObjects {
-  // import com.fasterxml.jackson.databind.ObjectMapper; // version 2.11.1
-// import com.fasterxml.jackson.annotation.JsonProperty; // version 2.11.1
-/* ObjectMapper om = new ObjectMapper();
-Root root = om.readValue(myJsonString, Root.class); */
   public class Clouds{
     public int all;
 

@@ -11,6 +11,10 @@ public class Authentication {
       return false;
     }
     String hashedUserPassword = Hashing.sha256().hashString(userPassword, StandardCharsets.UTF_8).toString();
-    return UserInfoReader.readFile(userLogin, hashedUserPassword);
+    if (!UserInfoReader.readFile(userLogin, hashedUserPassword)) {
+      return false;
+    }else {
+      return true;
+    }
   }
 }

@@ -11,7 +11,7 @@ public class UserPasswordValidation {
       return false;
     }
     if (password.length() > 20 || login.length() > 20) {
-      System.out.println("Пароль та Логін не можуть бути меншими за 20 значень відповідно!!!");
+      System.out.println("Пароль та Логін не можуть бути більшими за 20 значень відповідно!!!");
       return false;
     }
     if (password.equals(login)) {

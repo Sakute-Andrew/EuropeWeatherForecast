@@ -1,0 +1,11 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="EuropeWeatherForecast:jar">
+    <output-path>$PROJECT_DIR$/out/artifacts/EuropeWeatherForecast_jar</output-path>
+    <root id="archive" name="EuropeWeatherForecast.jar">
+      <element id="module-output" name="EuropeWeatherForecast" />
+      <element id="extracted-dir" path="$USER_HOME$/Downloads/Telegram Desktop/gson-2.10.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$USER_HOME$/Downloads/guava-19.0.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$USER_HOME$/Downloads/ip-geolocation-api-java-1.0.12.jar" path-in-jar="/" />
+    </root>
+  </artifact>
+</component>

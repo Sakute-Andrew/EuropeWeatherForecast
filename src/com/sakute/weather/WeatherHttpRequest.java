@@ -20,15 +20,15 @@ public class WeatherHttpRequest {
         String line;
         while ((line = in.readLine()) != null){
           sb.append(line);
-          sb.append("\n");
         }
-        System.out.println("Результат пошуку: " + sb);
         CityWeather.displayCityWeather(sb.toString(), city);
+        return true;
       }else {
         System.out.println("ПОМИЛКА ЗАПИТУ " + request.getResponseCode() + ", " + request.getResponseMessage());
+        return false;
       }
     } catch (Throwable cause){
-      System.out.println("Немає з'єднання з інтернетом!");
+      System.out.println("Не вдалося записати історію пошуку!");
     }finally {
       if (request != null){
         request.disconnect();

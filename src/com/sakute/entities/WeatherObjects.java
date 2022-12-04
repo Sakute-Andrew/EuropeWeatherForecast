@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 public class WeatherObjects {
   public class Clouds{
-    public int all;
+    private int all;
 
     public int getAll() {
       return all;
@@ -15,30 +15,20 @@ public class WeatherObjects {
     }
   }
 
-  public class Coord{
-    public double lon;
-    public double lat;
-
-    public double getLat() {
-      return lat;
-    }
-
-  }
-
   public class Main{
-    public double temp;
-    public double feels_like;
-    public double temp_min;
-    public double temp_max;
-    public int pressure;
-    public int humidity;
+    private  double temp;
+    private  double feelsLike;
+    private  double temp_min;
+    private  double temp_max;
+    private  int pressure;
+    private  int humidity;
 
     public double getTemp() {
       return temp;
     }
 
     public double getFeels_like() {
-      return feels_like;
+      return feelsLike;
     }
 
     public double getTemp_min() {
@@ -61,15 +51,15 @@ public class WeatherObjects {
       this.temp = temp;
     }
 
-    public void setFeels_like(double feels_like) {
-      this.feels_like = feels_like;
+    public void setFeelsLike(double feels_like) {
+      this.feelsLike = feelsLike;
     }
 
-    public void setTemp_min(double temp_min) {
+    public void setTempMin(double temp_min) {
       this.temp_min = temp_min;
     }
 
-    public void setTemp_max(double temp_max) {
+    public void setTempMax(double temp_max) {
       this.temp_max = temp_max;
     }
 
@@ -83,23 +73,18 @@ public class WeatherObjects {
   }
 
   public class Root{
-    Coord coord;
-    public ArrayList<Weather> weather;
-    public String base;
+    private  ArrayList<Weather> weather;
+    private  String base;
      Main main;
-    public int visibility;
+    private  int visibility;
      Wind wind;
      Clouds clouds;
     public int dt;
      Sys sys;
-    public int timezone;
-    public int id;
+    private int timezone;
+    private  int id;
      String name;
-    public int cod;
-
-    public Coord getCoord() {
-      return coord;
-    }
+    private  int cod;
 
     public ArrayList<Weather> getWeather() {
       return weather;
@@ -147,10 +132,6 @@ public class WeatherObjects {
 
     public int getCod() {
       return cod;
-    }
-
-    public void setCoord(Coord coord) {
-      this.coord = coord;
     }
 
     public void setWeather(ArrayList<Weather> weather) {
@@ -203,11 +184,11 @@ public class WeatherObjects {
   }
 
   public class Sys{
-    public int type;
-    public int id;
-    public String country;
-    public int sunrise;
-    public int sunset;
+    private  int type;
+    private  int id;
+    private  String country;
+    private  int sunrise;
+    private  int sunset;
 
     public int getType() {
       return type;
@@ -251,23 +232,13 @@ public class WeatherObjects {
   }
 
   public class Weather{
-    public int id;
-    public String main;
-    public String description;
-    public String icon;
 
-    public int getId() {
-      return id;
-    }
-
-    public void setId(int id) {
-      this.id = id;
-    }
+    private  String main;
+    private  String description;
 
     public String getMain() {
       return main;
     }
-
     public void setMain(String main) {
       this.main = main;
     }
@@ -280,18 +251,11 @@ public class WeatherObjects {
       this.description = description;
     }
 
-    public String getIcon() {
-      return icon;
-    }
-
-    public void setIcon(String icon) {
-      this.icon = icon;
-    }
   }
 
   public class Wind{
-    public double speed;
-    public int deg;
+    private  double speed;
+    private  int deg;
 
     public double getSpeed() {
       return speed;

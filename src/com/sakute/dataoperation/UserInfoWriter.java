@@ -1,29 +1,21 @@
 package com.sakute.dataoperation;
 
-import static java.nio.file.StandardOpenOption.APPEND;
-
 import com.sakute.entities.User;
-import java.io.BufferedOutputStream;
 import java.io.BufferedReader;
-import java.io.BufferedWriter;
 import java.io.FileWriter;
 import java.io.InputStream;
 import java.io.InputStreamReader;
-import java.io.OutputStream;
-import java.io.OutputStreamWriter;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
-import java.nio.file.StandardOpenOption;
 
 public class UserInfoWriter {
-  public static boolean writeUserInfo(User newUser) {
+  public static boolean writeUserInfo(String userLogin, String hashedPassword) {
     try {
       String filename = "users.txt";
       Path path = Paths.get(filename);
 
-      OutputStream output = new BufferedOutputStream(Files.newOutputStream(Path.of(filename), new StandardOpenOption[]{APPEND}));
-      BufferedWriter writer = new BufferedWriter(new OutputStreamWriter(output));
+      FileWriter writer = new FileWriter(filename,true);
 
       InputStream reader = Files.newInputStream(path);
       BufferedReader userReader = new BufferedReader(new InputStreamReader(reader));
@@ -34,20 +26,18 @@ public class UserInfoWriter {
       while ((userData = userReader.readLine()) != null) {
         String[] account = userData.split(",");
         login = account[0];
-        if (login.equals(newUser.getLogin())) {
+        if (login.equals(userLogin)) {
           System.out.println("Такий акаунт існує!!!!");
           return false;
         }
       }
 
-      writer.write(newUser.getLogin() + "," + newUser.getPassword());
-      User.setLogin(newUser.getLogin());
-      writer.newLine();
+      writer.write(userLogin + "," + hashedPassword + "\n");
+      User.setLogin(userLogin);
       writer.close();
       reader.close();
       userReader.close();
-      output.close();
-      System.out.println("Ви зареєструвались як користувач:" + newUser.getLogin());
+      System.out.println("Ви зареєструвались як користувач:" + userLogin);
       return true;
 
       }catch (Exception e){

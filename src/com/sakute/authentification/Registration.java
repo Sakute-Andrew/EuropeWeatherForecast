@@ -3,7 +3,6 @@ package com.sakute.authentification;
 import com.google.common.hash.Hashing;
 import com.sakute.dataoperation.UserInfoWriter;
 import com.sakute.dataoperation.UserPasswordValidation;
-import com.sakute.entities.User;
 import java.nio.charset.StandardCharsets;
 
 
@@ -13,8 +12,7 @@ public class Registration {
       return false;
     }
       String hashedPassword = Hashing.sha256().hashString(userPassword, StandardCharsets.UTF_8).toString();
-    User newUser = new User(userPassword, hashedPassword);
-     if (!UserInfoWriter.writeUserInfo(newUser)) {
+     if (!UserInfoWriter.writeUserInfo(userLogin, hashedPassword)) {
        return false;
      }
       return true;

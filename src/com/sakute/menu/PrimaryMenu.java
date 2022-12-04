@@ -16,11 +16,11 @@ public class PrimaryMenu {
 
   public static void menu() {
     //Меню опцій
-      String[] options = {"___________________________________________",
-          "1- Авторизація;",
-          "2- Реєстрація;",
-          "3- Перегляд погоди за містом.",
-          "4- Вихід",
+      String[] menuOptions = {"___________________________________________",
+          "[1] " +"\uD83D\uDD11" +" - Авторизація",
+          "[2] " +"\uD83D\uDD8A" +" - Реєстрація",
+          "[3] " +"\uD83D\uDD0D" +" - Перегляд погоди за містом",
+          "[4] " +"❌" +" - Вихід",
           "___________________________________________"
       };
       //Зчитування вибору користувача
@@ -28,7 +28,7 @@ public class PrimaryMenu {
       int option = 1;
       //Поки користувач не вибирає меню вихід, доти програма буде працювати
       while (option != 4) {
-        printMenu(options);
+        printMenu(menuOptions);
         try {
           option = scanner.nextInt();
           switch (option) {
@@ -57,7 +57,7 @@ public class PrimaryMenu {
       System.out.println("Введіть логін: ");
       String userLogin = scanner.nextLine();
       System.out.println("Введіть пароль: ");
-      String userPassword = scanner.next();
+      String userPassword = scanner.nextLine();
       if (!Authentication.authentificationProcess(userLogin, userPassword)){
         System.out.println("Вхід в аккаунт не виконано!");
       }else {
@@ -65,7 +65,6 @@ public class PrimaryMenu {
         User.AutConfirm.setConfirmed(true);
         MainMenu.menu();
       }
-
     }
 
     private static void option2() {
@@ -89,17 +88,21 @@ public class PrimaryMenu {
     public static void option3() {
       Scanner scanner = new Scanner(System.in);
       System.out.println("Введіть назву Міста чи Регіону:");
-      String city = scanner.next();
+      String city =  scanner.next();
       System.out.println("Зачекайте, будь ласка!");
       WeatherHttpRequest.weatherRequets(city);
 
     }
 
   private static void option4() {
+    Scanner scanner = new Scanner(System.in);
     System.out.println("Ви точно бажаєте вийти? Y/N");
-
-
-
+    String confirm = scanner.nextLine();
+    if (confirm == "Y" || confirm == "y"){
+      System.out.println("До Зустрічі!");
+      System.exit(0);
+    }
+    menu();
   }
 
   }

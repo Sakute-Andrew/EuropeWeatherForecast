@@ -15,11 +15,11 @@ public class SearchHistory {
       while (scan.hasNextLine()) {
         listdata = scan.nextLine().split(symbol);
         System.out.println(
-            " | Дата " + listdata[2] + " | Країна: " + listdata[1] + " | Місто/Регіон: " + listdata[0]);
+            " | Date " + listdata[2] + " | Country: " + listdata[1] + " | City/Region: " + listdata[0]);
       }
       list.close();
     } catch (IOException e) {
-      System.out.println("Історію вже було очищено або вона порожня!!!");
+      System.out.println("History is cleared, or been already!!!");
     }
     return true;
   }

@@ -20,15 +20,15 @@ public class UserInfoReader {
           User.setLogin(userLogin);
           return true;
         }else if (data[0].equals(userLogin)){
-          System.out.println("Неправильний пароль!");
+          System.out.println("Wrong password or login!");
           return false;
-        }else {
-
         }
+
+
       }
       return false;
     } catch (Exception e){
-      System.out.println("Жодний користувач не зареєстрований!Зробіть це,аби авторизуватись!");
+      System.out.println("No user is registered! Do this to log in!");
     }
     return false;
   }

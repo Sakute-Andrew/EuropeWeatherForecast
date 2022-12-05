@@ -11,16 +11,16 @@ public class PrimaryMenu {
     for (String option : options) {
       System.out.println(option);
     }
-    System.out.print("Ласкаво Просимо у EWF!Виберіть опцію : ");
+    System.out.print("Welcome to EuropeWeatherForecast!Select an option : ");
   }
 
   public static void menu() {
     //Меню опцій
       String[] menuOptions = {"___________________________________________",
-          "[1] " +"\uD83D\uDD11" +" - Авторизація",
-          "[2] " +"\uD83D\uDD8A" +" - Реєстрація",
-          "[3] " +"\uD83D\uDD0D" +" - Перегляд погоди за містом",
-          "[4] " +"❌" +" - Вихід",
+          "[1] "  +" - Authentification",
+          "[2] "  +" - Registration",
+          "[3] "  +" - Forecast by city name",
+          "[4] "  +" - Exit",
           "___________________________________________"
       };
       //Зчитування вибору користувача
@@ -45,7 +45,7 @@ public class PrimaryMenu {
               option4();
           }
         } catch (Exception ex) {
-          System.out.println("Такої опції нема!Виберіть між 1 та 4");
+          System.out.println("There's no such option!Select between 1 and 4");
           scanner.next();
         }
       }
@@ -54,14 +54,14 @@ public class PrimaryMenu {
     // Опції
     private static void option1() {
       Scanner scanner = new Scanner(System.in);
-      System.out.println("Введіть логін: ");
+      System.out.println("Enter login: ");
       String userLogin = scanner.nextLine();
-      System.out.println("Введіть пароль: ");
+      System.out.println("Enter password: ");
       String userPassword = scanner.nextLine();
       if (!Authentication.authentificationProcess(userLogin, userPassword)){
-        System.out.println("Вхід в аккаунт не виконано!");
+        System.out.println("Failed to log in!");
       }else {
-        System.out.println("Успішний вхід!! Вітаємо " + userLogin);
+        System.out.println("Successful authentification! Welcome " + userLogin);
         User.AutConfirm.setConfirmed(true);
         MainMenu.menu();
       }
@@ -69,17 +69,17 @@ public class PrimaryMenu {
 
     private static void option2() {
       Scanner scanner = new Scanner(System.in);
-      System.out.println("Введіть логін: ");
+      System.out.println("Enter login: ");
       String userLogin = scanner.nextLine();
-      System.out.println("Введіть пароль: ");
+      System.out.println("Enter password: ");
       String userPassword = scanner.next();
       if (!Registration.registrationProcess(userLogin, userPassword)){
-        System.out.println(String.join("\n", "Помилка реєстрації!",
-            "Зверніть увагу, ваш пароль має бути наступним:",
-            "- Складатися виключно з ЛАТИНСЬКИХ БУКВ!!", "- Містити цифри(від 0-9)",
-            "- Складатись з великих та маленьких букв", "- Містити символи:[@#$%^&+=]"));
+        System.out.println(String.join("\n", "Registration error!",
+            "Please note that your password must be:",
+            "- Compile independently from LATIN LETTERS!!", "- Contain numbers (from 0-9)",
+            "- Consist of upper and lower case letters", "- Contain symbols:[@#$%^&+=]"));
       }else {
-        System.out.println("Успішна реєстрація акаунту!");
+        System.out.println("Successesful registration!");
         User.AutConfirm.setConfirmed(true);
         MainMenu.menu();
       }
@@ -87,19 +87,19 @@ public class PrimaryMenu {
 
     public static void option3() {
       Scanner scanner = new Scanner(System.in);
-      System.out.println("Введіть назву Міста чи Регіону:");
+      System.out.println("Enter city name:");
       String city =  scanner.next();
-      System.out.println("Зачекайте, будь ласка!");
+      System.out.println("Wait, please!");
       WeatherHttpRequest.weatherRequets(city);
 
     }
 
   private static void option4() {
     Scanner scanner = new Scanner(System.in);
-    System.out.println("Ви точно бажаєте вийти? Y/N");
+    System.out.println("You sure, you want to exit? Y/N");
     String confirm = scanner.nextLine();
     if (confirm == "Y" || confirm == "y"){
-      System.out.println("До Зустрічі!");
+      System.out.println("See you later!");
       System.exit(0);
     }
     menu();

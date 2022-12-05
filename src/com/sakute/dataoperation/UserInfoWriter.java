@@ -27,7 +27,7 @@ public class UserInfoWriter {
         String[] account = userData.split(",");
         login = account[0];
         if (login.equals(userLogin)) {
-          System.out.println("Такий акаунт існує!!!!");
+          System.out.println("Such an account exists already!!!!");
           return false;
         }
       }
@@ -37,11 +37,11 @@ public class UserInfoWriter {
       writer.close();
       reader.close();
       userReader.close();
-      System.out.println("Ви зареєструвались як користувач:" + userLogin);
+      System.out.println("You register as user:" + userLogin);
       return true;
 
       }catch (Exception e){
-      System.out.println("Помилка запису!!!");
+      System.out.println("Record error!");
       return false;
     }
 

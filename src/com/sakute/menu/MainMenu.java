@@ -12,17 +12,17 @@ public class MainMenu {
     for (String option : options) {
       System.out.println(option);
     }
-    System.out.print("Вітаємо, користувач " + ": ");
+    System.out.print("Select an option: ");
   }
 
   public static void menu() {
     //Меню опцій
     String[] options = {"___________________________________________",
-        "[1] " +"📍" + " Перегляд за поточним місцерозташуванням",
-        "[2] " +"🌦" +" - Перегляд погоди за містом",
-        "[2] " +"🧾" +" - Історія пошуку",
-        "[4] " +"🗑" +" - Видалення історії",
-        "[5] " +"❌" +" - Вихід",
+        "[1] "  +" - Cuurent location forecast",
+        "[2] "  +" - Forecast by city name",
+        "[3] "  +" - Search History",
+        "[4] "  +" - History Deletion",
+        "[5] "  +" - Exit",
         "___________________________________________"
     };
     //Зчитування вибору користувача
@@ -49,7 +49,7 @@ public class MainMenu {
             option5();
         }
       } catch (Exception ex) {
-        System.out.println("Такої опції нема!Виберіть між 1 та 4");
+        System.out.println("There's no such option!Select between 1 and 4");
         scanner.next();
       }
     }
@@ -69,20 +69,22 @@ public class MainMenu {
   private static void option4() {
     File file = new File("historyview/" + User.getLogin() + ".txt");
     if (file.delete()) {
-      System.out.println("Історію очищено!");
+      System.out.println("History was cleared!");
     } else {
-      System.out.println("Історію вже було очищено!");
+      System.out.println("History has been cleared already!");
     }
+    menu();
   }
   private static void option5() {
     Scanner scanner = new Scanner(System.in);
-    System.out.println("Ви точно бажаєте вийти? Y/N");
+    System.out.println("You sure, you want to exit? Y/N");
     String confirm = scanner.nextLine();
     if (confirm == "Y" || confirm == "y"){
-      System.out.println("До Зустрічі!");
+      System.out.println("See you later!");
       System.exit(0);
+    }else {
+      menu();
     }
-    menu();
   }
 
 }

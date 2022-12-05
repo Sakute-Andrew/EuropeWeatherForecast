@@ -75,15 +75,15 @@ public class WeatherObjects {
   public class Root{
     private  ArrayList<Weather> weather;
     private  String base;
-     Main main;
+    private Main main;
     private  int visibility;
-     Wind wind;
-     Clouds clouds;
+    private Wind wind;
+    private Clouds clouds;
     public int dt;
-     Sys sys;
+     private Sys sys;
     private int timezone;
     private  int id;
-     String name;
+    private String name;
     private  int cod;
 
     public ArrayList<Weather> getWeather() {
@@ -251,11 +251,29 @@ public class WeatherObjects {
       this.description = description;
     }
 
+    public String toString() {
+      return new StringBuffer()
+          .append(this.main)
+          .append(", ")
+          .append(this.description)
+          .toString();
+     }
+
   }
 
   public class Wind{
     private  double speed;
     private  int deg;
+
+    private double gust;
+
+    public double getGust() {
+      return gust;
+    }
+
+    public void setGust(double gust) {
+      this.gust = gust;
+    }
 
     public double getSpeed() {
       return speed;
